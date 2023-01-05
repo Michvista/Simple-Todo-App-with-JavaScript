@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<body>
+  <h1>Todo App</h1>
+<input type="text" id="input">
+<span id='the span is for space since i dont want to add css to this project'></span> 
+<button id="btn">+</button>
+
+<div id="box"></div>
+</body>
+<script>
+  const btn = document.getElementById('btn');
+  const box = document.getElementById('box');
+  btn.addEventListener('click', () => {
+      const input = document.getElementById('input');
+    var list = document.createElement('li');
+    var strikebtn = document.createElement('button');
+    var deletebtn = document.createElement('button');
+    var editbtn = document.createElement('button');
+    deletebtn.innerText = 'delete';
+    strikebtn.innerText = 'strike';
+    editbtn.innerText = 'edit';
+    list.innerText = input.value;
+    box.appendChild(list);
+    list.appendChild(strikebtn);
+    list.appendChild(deletebtn);
+    list.appendChild(editbtn);
+    input.value = "";
+    
+    strikebtn.addEventListener('click', () => {
+      list.style.textDecoration = 'line-through';
+    })
+    deletebtn.addEventListener('click', () => {
+      box.removeChild(list);
+    })
+    editbtn.addEventListener('click', () => {
+          btn.innerText = "edit";
+      input.value = list.innerText;
+      btn.addEventListener('click', ()=> {
+          btn.innerText = "+";
+        list.innerText = input.value;
+          box.removeChild(list)
+      })
+    })
+  })
+  
+</script>
+</html>
